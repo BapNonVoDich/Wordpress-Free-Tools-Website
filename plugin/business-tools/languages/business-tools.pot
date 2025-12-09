@@ -1,0 +1,34 @@
+# Copyright (C) 2024 Business Tools
+# This file is distributed under the same license as the Business Tools plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Business Tools 1.0.0\n"
+"Report-Msgid-Bugs-To: https://example.com\n"
+"POT-Creation-Date: 2024-01-01 12:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Máy Tính"
+msgstr ""
+
+msgid "Máy tính cơ bản với các phép toán số học và tính phần trăm."
+msgstr ""
+
+msgid "Chia Hóa Đơn"
+msgstr ""
+
+msgid "Chia hóa đơn giữa nhiều người với tính toán tiền tip."
+msgstr ""
+
+msgid "Tính Thuế Tự Động"
+msgstr ""
+
+msgid "Tính toán thuế tự động với nhiều mức thuế suất (VAT, thuế bán hàng)."
+msgstr ""
+

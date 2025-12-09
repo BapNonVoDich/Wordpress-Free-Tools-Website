@@ -1,0 +1,60 @@
+services:
+  wordpress:
+    image: wordpress:latest
+    container_name: tools-web-wp
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: ${DB_USER:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:-wordpress}
+      WORDPRESS_DB_NAME: ${DB_NAME:-wordpress}
+      WORDPRESS_DEBUG: ${WP_DEBUG:-1}
+    volumes:
+      - wordpress_data:/var/www/html
+      - ../theme/tools-theme:/var/www/html/wp-content/themes/tools-theme
+      - ../plugin/business-tools:/var/www/html/wp-content/plugins/business-tools
+    depends_on:
+      - db
+    networks:
+      - tools-network
+
+  db:
+    image: mysql:8.0
+    container_name: tools-web-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_NAME:-wordpress}
+      MYSQL_USER: ${DB_USER:-wordpress}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-wordpress}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpassword}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - tools-network
+    command: --default-authentication-plugin=mysql_native_password
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: tools-web-phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: ${DB_USER:-wordpress}
+      PMA_PASSWORD: ${DB_PASSWORD:-wordpress}
+    depends_on:
+      - db
+    networks:
+      - tools-network
+
+volumes:
+  wordpress_data:
+  db_data:
+
+networks:
+  tools-network:
+    driver: bridge
+

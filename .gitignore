@@ -1,0 +1,48 @@
+# WordPress Core
+/wordpress/
+/wp-config.php
+/wp-content/uploads/
+/wp-content/upgrade/
+/wp-content/backup-db/
+/wp-content/advanced-cache.php
+/wp-content/wp-cache-config.php
+
+# Docker
+docker/.env
+docker/wordpress_data/
+docker/db_data/
+
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Environment files
+.env
+.env.local
+
+# Build files
+dist/
+build/
+

@@ -1,0 +1,665 @@
+/*
+Theme Name: Tools Theme
+Theme URI: https://example.com/tools-theme
+Author: Your Name
+Author URI: https://example.com
+Description: Modern minimal theme for Vietnamese business tools website built around the Tool custom post type.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: tools-theme
+Domain Path: /languages
+*/
+
+/* ============================================
+   CSS Custom Properties - Design System
+   ============================================ */
+:root {
+    /* Colors - Calm Authority */
+    --color-primary: #1a2332;
+    --color-primary-dark: #0f1419;
+    --color-secondary: #2c3e50;
+    --color-accent: #16a085;
+    --color-accent-light: #1abc9c;
+    --color-accent-blue: #3498db;
+    --color-accent-blue-light: #5dade2;
+    
+    /* Background Colors */
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f8f9fa;
+    --color-bg-tertiary: #e9ecef;
+    
+    /* Text Colors */
+    --color-text-primary: #1a2332;
+    --color-text-secondary: #495057;
+    --color-text-muted: #6c757d;
+    --color-text-light: #ffffff;
+    
+    /* Border Colors */
+    --color-border: #dee2e6;
+    --color-border-light: #e9ecef;
+    
+    /* Typography */
+    --font-heading: 'Inter', 'Poppins', 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Open Sans', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Courier New', Courier, monospace;
+    
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+    
+    /* Layout */
+    --container-width: 1200px;
+    --container-padding: var(--spacing-md);
+    --border-radius: 8px;
+    --border-radius-lg: 12px;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+    
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 300ms ease;
+    --transition-slow: 500ms ease;
+}
+
+/* ============================================
+   Reset & Base Styles
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   Typography
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+p {
+    margin-bottom: var(--spacing-md);
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-accent-light);
+}
+
+/* ============================================
+   Layout
+   ============================================ */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.site-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-main {
+    flex: 1;
+    padding: var(--spacing-xl) 0;
+}
+
+/* ============================================
+   Header & Navigation
+   ============================================ */
+.site-header {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: var(--spacing-md) 0;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.site-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-light);
+    text-decoration: none;
+}
+
+.main-navigation ul,
+.main-navigation .main-menu {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+.main-navigation .menu-item-has-children {
+    position: relative;
+}
+
+.main-navigation .sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--color-primary);
+    min-width: 200px;
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-sm) 0;
+    margin-top: var(--spacing-xs);
+    flex-direction: column;
+    gap: 0;
+}
+
+.main-navigation .menu-item-has-children:hover .sub-menu {
+    display: flex;
+}
+
+.main-navigation .sub-menu li {
+    width: 100%;
+}
+
+.main-navigation .sub-menu a {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 0;
+}
+
+.main-navigation .sub-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.main-navigation a {
+    color: var(--color-text-light);
+    font-weight: 500;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-fast);
+}
+
+.main-navigation a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-light);
+}
+
+/* Header Search */
+.header-search {
+    margin-left: var(--spacing-lg);
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.search-field {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--border-radius);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    min-width: 200px;
+}
+
+.search-field::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.search-field:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.search-submit {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--color-text-light);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color var(--transition-fast);
+}
+
+.search-submit:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+.btn {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-text-light);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-primary);
+}
+
+/* ============================================
+   Cards
+   ============================================ */
+.card {
+    background-color: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+}
+
+/* ============================================
+   Tool Grid
+   ============================================ */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+}
+
+.tool-card {
+    background-color: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+    transition: all var(--transition-base);
+    cursor: pointer;
+}
+
+.tool-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.tool-card h3 {
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+}
+
+.tool-card p {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   Forms
+   ============================================ */
+.form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1rem;
+    font-family: var(--font-body);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    transition: border-color var(--transition-fast);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(22, 160, 133, 0.1);
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.site-footer {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: var(--spacing-xl) 0;
+    margin-top: var(--spacing-3xl);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.footer-section h4 {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-section a {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-section a:hover {
+    color: var(--color-text-light);
+}
+
+.footer-bottom {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+    :root {
+        --container-padding: var(--spacing-md);
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    .header-container {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .main-navigation ul {
+        flex-direction: column;
+        width: 100%;
+        gap: var(--spacing-sm);
+    }
+    
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .tool-page {
+        grid-template-columns: 1fr;
+    }
+    
+    .tool-sidebar {
+        order: -1;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    .site-main {
+        padding: var(--spacing-md) 0;
+    }
+}
+
+/* ============================================
+   Tool Page Layout
+   ============================================ */
+.tool-page {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: var(--spacing-xl);
+    margin: var(--spacing-xl) 0;
+}
+
+.tool-header {
+    grid-column: 1 / -1;
+    margin-bottom: var(--spacing-lg);
+}
+
+.tool-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.tool-description {
+    color: var(--color-text-secondary);
+    font-size: 1.125rem;
+    margin-bottom: 0;
+}
+
+.tool-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.tool-interface {
+    width: 100%;
+}
+
+.tool-instructions {
+    background: var(--color-bg-secondary);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--color-border);
+}
+
+.tool-instructions h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
+}
+
+.tool-instructions ol,
+.tool-instructions ul {
+    margin-left: var(--spacing-lg);
+    color: var(--color-text-secondary);
+}
+
+.tool-instructions li {
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+}
+
+.tool-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.related-tools h3,
+.share-buttons h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
+}
+
+.related-tools ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.related-tools li {
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.related-tools li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.related-tools a {
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast);
+}
+
+.related-tools a:hover {
+    color: var(--color-accent);
+}
+
+.share-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.share-links .btn {
+    width: 100%;
+    text-align: center;
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+

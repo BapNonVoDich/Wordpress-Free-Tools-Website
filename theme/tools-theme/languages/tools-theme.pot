@@ -1,0 +1,55 @@
+# Copyright (C) 2024 Tools Theme
+# This file is distributed under the same license as the Tools Theme.
+msgid ""
+msgstr ""
+"Project-Id-Version: Tools Theme 1.0.0\n"
+"Report-Msgid-Bugs-To: https://example.com\n"
+"POT-Creation-Date: 2024-01-01 12:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Trang Chủ"
+msgstr ""
+
+msgid "Công Cụ"
+msgstr ""
+
+msgid "Blog"
+msgstr ""
+
+msgid "Về Chúng Tôi"
+msgstr ""
+
+msgid "Công Cụ Kinh Doanh Miễn Phí"
+msgstr ""
+
+msgid "Bộ sưu tập các công cụ tính toán và quản lý miễn phí dành cho doanh nghiệp Việt Nam"
+msgstr ""
+
+msgid "Khám Phá Công Cụ"
+msgstr ""
+
+msgid "Các Công Cụ Phổ Biến"
+msgstr ""
+
+msgid "Chưa có công cụ nào được đăng ký."
+msgstr ""
+
+msgid "Bài Viết Mới Nhất"
+msgstr ""
+
+msgid "Đọc Thêm"
+msgstr ""
+
+msgid "Chưa có bài viết nào."
+msgstr ""
+
+msgid "Xem Tất Cả Bài Viết"
+msgstr ""
+
