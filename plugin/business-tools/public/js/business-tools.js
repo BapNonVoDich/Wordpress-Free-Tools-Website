@@ -9,7 +9,7 @@
      * Debug utility - only log in development
      */
     const Debug = {
-        enabled: false, // Set to true for debugging
+        enabled: true, // Set to true for debugging
         log: function() {
             if (this.enabled && console && console.log) {
                 console.log.apply(console, arguments);
@@ -3688,6 +3688,7 @@
          * Display summary factors (Nhận Xét Chung) - reusable function
          */
         displaySummaryFactors: function(analysis) {
+            const $result = $('#seo-checker-result');
             const $basicFactors = $('#seo-basic-factors');
             if ($basicFactors.length === 0) {
                 Debug.warn('Summary factors container not found');
